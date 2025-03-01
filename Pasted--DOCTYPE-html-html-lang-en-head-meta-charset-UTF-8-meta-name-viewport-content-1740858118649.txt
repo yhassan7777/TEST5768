@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youmna Hassan | Business Systems Analyst</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #5e60ce;
+            --secondary: #64dfdf;
+            --accent: #ff9f1c;
+            --light: #f8f9fa;
+            --dark: #2b2d42;
+            --success: #06d6a0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        
+        p {
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--accent);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            position: relative;
+            color: white;
+            padding: 20px 0;
+            overflow: hidden;
+        }
+        
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(94, 96, 206, 0.85) 0%, rgba(100, 223, 223, 0.85) 100%);
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+        
+        .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        
+        .title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--light);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        nav {
+            background-color: var(--dark);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        .nav-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        /* Main Content */
+        main {
+            padding: 50px 0;
+        }
+        
+        section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary);
+            color: var(--primary);
+            letter-spacing: 0.5px;
+        }
+        
+        /* About */
+        .about-content {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        
+        .about-text {
+            flex: 2;
+        }
+        
+        .skills-list {
+            flex: 1;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Experience */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--secondary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            background-color: white;
+            border: 4px solid var(--primary);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -16px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .timeline-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .timeline-company {
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .timeline-details ul {
+            padding-left: 20px;
+        }
+        
+        .timeline-details li {
+            margin-bottom: 5px;
+        }
+        
+        /* Education */
+        .education-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .education-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .edu-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px;
+        }
+        
+        .edu-name {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .edu-degree {
+            font-weight: 500;
+        }
+        
+        .edu-body {
+            padding: 15px;
+        }
+        
+        .edu-date {
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        /* Projects & Certificates */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px;
+        }
+        
+        .card-title {
+            font-size: 1.2rem;
+        }
+        
+        .card-body {
+            padding: 15px;
+        }
+        
+        .card-date {
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .footer-text {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        /* Achievements section */
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .achievement-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--accent);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .achievement-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .achievement-date {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 15px;
+            }
+            
+            .timeline-item:nth-child(even)::after {
+                left: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="video-background">
+            <!-- Replace the comment below with your actual video when implementing the website -->
+            <!-- <video autoplay muted loop>
+                <source src="your-video-file.mp4" type="video/mp4">
+            </video> -->
+            <div style="width:100%; height:100%; background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);"></div>
+        </div>
+        <div class="container">
+            <div class="header-content">
+                <img src="/api/placeholder/400/400" alt="Youmna Hassan" class="profile-img">
+                <!-- Replace the placeholder above with your actual photo when implementing the website -->
+                <!-- The ideal image would be a professional headshot with a clean background -->
+                <h1 class="name">Youmna Hassan</h1>
+                <h2 class="title">Business Systems Analyst at Adobe</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i>📍</i>
+                        <span>Seattle, WA</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>📧</i>
+                        <a href="mailto:youmnahassan99@gmail.com">youmnahassan99@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i>📱</i>
+                        <a href="tel:+12538304221">(253)-830-4221</a>
+                    </div>
+                    <div class="contact-item">
+                        <i>💼</i>
+                        <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <li><a href="#skills">Skills</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I am a Business Systems Analyst at Adobe with a strong background in data analytics, software asset management, and business intelligence. With a degree in Information Systems from the University of Washington's Foster School of Business, I combine technical expertise with business acumen to drive meaningful results.</p>
+                    <br>
+                    <p>Throughout my career, I've enabled significant cost savings, established powerful business intelligence dashboards, and streamlined enterprise-wide processes. I'm passionate about leveraging data to solve complex problems and drive business decisions.</p>
+                    <br>
+                    <p>My diverse experience spans across technology, finance, and marketing sectors, giving me a well-rounded perspective on business challenges. I'm particularly skilled in data visualization, process improvement, and connecting disparate systems to create unified data solutions.</p>
+                </div>
+                <div class="skills-list">
+                    <h3>Key Skills</h3>
+                    <br>
+                    <div>
+                        <span class="skill-tag">Data Analytics</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">PowerBI</span>
+                        <span class="skill-tag">Excel</span>
+                        <span class="skill-tag">ServiceNow</span>
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">Database Design</span>
+                        <span class="skill-tag">Data Modeling</span>
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Project Management</span>
+                        <span class="skill-tag">Process Improvement</span>
+                        <span class="skill-tag">Jira</span>
+                        <span class="skill-tag">Arabic</span>
+                        <span class="skill-tag">Growth Mindset</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="experience">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jan 2023 - Present</div>
+                        <h3 class="timeline-title">Business Systems Analyst II</h3>
+                        <div class="timeline-company">Adobe Inc., Seattle, WA</div>
+                        <div class="timeline-details">
+                            <ul>
+                                <li>Enabled reporting of prohibited SW credit card spend, which aided in overall spend reduction by 53.36% for FY 2023</li>
+                                <li>Established 5 financial RTB PowerBI dashboards for Nestware that integrate SmartTrack, ServiceNow, & Zylo to report on SW Compliance, SW Credit Card Purchases, Non-Standard SW Requests, Nestware RTB Metrics, and Change Logs</li>
+                                <li>Aided Nestware's $28 million in Adobe's software savings for FY23</li>
+                                <li>Launched over 30 ServiceNow enhancements to normalize enterprise-wide Non-Standard Software Request process</li>
+                                <li>Connected 3 environments to org's Unified Data Architecture to query through Azure Data Studio & Databricks</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">April 2022 - Jan 2023</div>
+                        <h3 class="timeline-title">Software Asset Management Analyst</h3>
+                        <div class="timeline-company">Adobe Inc., Seattle, WA</div>
+                        <div class="timeline-details">
+                            <ul>
+                                <li>Proactive management of all software assets, ensuring software is used effectively, efficiently and legally at Adobe</li>
+                                <li>Implemented reporting systems to track prohibited software purchases</li>
+                                <li>Collaborated with cross-functional teams to streamline software acquisition processes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jan 2022 - Mar 2022</div>
+                        <h3 class="timeline-title">Microsoft Pricing Ops Tester</h3>
+                        <div class="timeline-company">Slalom LLC., Seattle, WA</div>
+                        <div class="timeline-details">
+                            <ul>
+                                <li>Conducted User Acceptance Testing (UAT) on Microsoft's Partner Center feature in Azure through Azure DevOps</li>
+                                <li>Connected with Microsoft's SWEs 3 times a week to discuss the escalation of bugs found in the Testing and Production environments</li>
+                                <li>Created test cases to validate product requirements & filed bugs when validations failed necessary requirements</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Oct 2021 - Jan 2022</div>
+                        <h3 class="timeline-title">Business Analyst Intern</h3>
+                        <div class="timeline-company">Reason Automation, Seattle, WA</div>
+                        <div class="timeline-details">
+                            <ul>
+                                <li>Created 3 DSP Advertising Dashboards to track digital marketing performance over time through Power BI</li>
+                                <li>Automated data using MySQL, Python and parsed deeply nested JSON arrays into 15,000 row database</li>
+                                <li>Onboarded over 50 Vendor Central & Seller Central clients using Jira, MySQL and AirTable</li>
+                                <li>Gained deep understanding and ability to collect, organize, analyze, and disseminate large datasets</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jun 2020 - Aug 2020</div>
+                        <h3 class="timeline-title">Financial Advisor Development Summer Analyst Intern</h3>
+                        <div class="timeline-company">Bank of America, Merrill Lynch, Bellevue, WA</div>
+                        <div class="timeline-details">
+                            <ul>
+                                <li>Earned 3rd Place in Data Literacy Project for outstanding risk management analysis on a given stock portfolio</li>
+                                <li>Calculated returns, sharpe ratio, and standard deviation to find lowest correlation and minimize risks</li>
+                                <li>Engaged in 7 meetings with Sr Financial Analysts and Chief Strategists on sustaining affluent clients</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="education">
+            <h2 class="section-title">Education</h2>
+            <div class="education-cards">
+                <div class="education-card">
+                    <div class="edu-header">
+                        <h3 class="edu-name">University of Washington</h3>
+                        <div class="edu-degree">B.A. Information Systems</div>
+                    </div>
+                    <div class="edu-body">
+                        <div class="edu-date">Graduated June 2021</div>
+                        <p><strong>Major GPA:</strong> 3.55 (4x Dean's Honors List)</p>
+                        <p><strong>Certificates:</strong></p>
+                        <ul>
+                            <li>Foster Excel For Business</li>
+                            <li>Certificate of International Studies in Business - Arabic (CISB)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="education-card">
+                    <div class="edu-header">
+                        <h3 class="edu-name">American University in Cairo</h3>
+                        <div class="edu-degree">Intensive Arabic Language Institute</div>
+                    </div>
+                    <div class="edu-body">
+                        <div class="edu-date">June 2019 - Aug 2019</div>
+                        <p>Intensive language immersion program studying Arabic in Cairo, Egypt.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="awards">
+            <h2 class="section-title">Awards & Certifications</h2>
+            <div class="achievements">
+                <div class="achievement-card">
+                    <h3 class="achievement-title">Business Impact Award</h3>
+                    <div class="achievement-date">Feb 2023</div>
+                    <p>Recognized for proactive management of all software assets, ensuring software is used effectively, efficiently and legally at Adobe.</p>
+                </div>
+                <div class="achievement-card">
+                    <h3 class="achievement-title">Identity Excellence Award</h3>
+                    <div class="achievement-date">Oct 2022</div>
+                    <p>Recognized for organizational impact by going above & beyond and aligning to our Adobe Technology Services Identity.</p>
+                </div>
+                <div class="achievement-card">
+                    <h3 class="achievement-title">Microsoft Azure Fundamentals</h3>
+                    <div class="achievement-date">Nov 2021 - Dec 2021</div>
+                    <p>Completed certification on cloud concepts, Azure workloads, security & privacy, and Azure pricing & support.</p>
+                </div>
+                <div class="achievement-card">
+                    <h3 class="achievement-title">Google Data Analytics Certificate</h3>
+                    <div class="achievement-date">June 2021 - Nov 2021</div>
+                    <p>Gained immersive Jr. Data Analyst functions over 8 courses like Data Cleaning, Problem Solving, Visualization.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills">
+            <h2 class="section-title">Technical Skills & Soft Skills</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Technical Skills</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Data Analytics Project Experience</li>
+                            <li>Database Design</li>
+                            <li>Data Modeling using MySQL</li>
+                            <li>Python Programming</li>
+                            <li>Tableau Visualization</li>
+                            <li>Advanced Excel</li>
+                            <li>PowerBI Dashboard Creation</li>
+                            <li>ServiceNow Administration</li>
+                            <li>Azure Data Studio</li>
+                            <li>Databricks</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Soft Skills</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Growth Mindset</li>
+                            <li>Creative Problem Solving</li>
+                            <li>Focused Execution</li>
+                            <li>Innovative Thinking</li>
+                            <li>Effective Communication</li>
+                            <li>Emotional Intelligence</li>
+                            <li>Cultural Awareness</li>
+                            <li>Project Management</li>
+                            <li>Team Collaboration</li>
+                            <li>Leadership</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Languages</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>English (Native)</li>
+                            <li>Arabic (Professional)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#" class="social-icon">in</a>
+                <a href="mailto:youmnahassan99@gmail.com" class="social-icon">✉</a>
+            </div>
+            <p>&copy; 2025 Youmna Hassan. All Rights Reserved.</p>
+            <p class="footer-text">Business Systems Analyst based in Seattle, Washington</p>
+        </div>
+    </footer>
+</body>
+</html>
